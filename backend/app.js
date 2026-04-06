@@ -18,13 +18,13 @@ app.get("/api/board", (req, res) => {
 });
 
 const path = require("path");
-const publicPath = path.join(__dirname, "dist"); // __dirname = 절대경로
+const publicPath = path.join(__dirname, "public"); // __dirname = 절대경로
 app.use(express.static(publicPath));
 
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "./dist", "index.html")); // ./dist 상대경로
+  res.sendFile(path.join(__dirname, "./public", "index.html")); // ./dist 상대경로
 });
 
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, "./dist", "index.html")); // 파일의 경로를 연결한 router는 index.html에 존재하기에 경로를 middleware로 연결
+  res.status(404).sendFile(path.join(__dirname, "./public", "index.html")); // 파일의 경로를 연결한 router는 index.html에 존재하기에 경로를 middleware로 연결
 });
